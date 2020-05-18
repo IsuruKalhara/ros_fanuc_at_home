@@ -1,0 +1,40 @@
+<launch>
+  <arg name="model" default="$(find fanuc_at_home)/urdf/robot/lrmate200ic.xacro"/>
+  <arg name="config_state" default="$(find fanuc_at_home)/config/fanuc_state.yaml"/>
+  <arg name="config_control" default="$(find fanuc_at_home)/config/fanuc_control.yaml"/>
+  <arg name="world" default="$(find base_robot)/worlds/house.world"/>
+  <arg name="x_pos" default="-2.5"/>
+  <arg name="y_pos" default="2.25"/>
+  <arg name="z_pos" default="1.02"/>
+
+  <arg name="rvizconfig" default="$(find urdf_tutorial)/rviz/urdf.rviz" />
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(arg world)"/>
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>
+
+  <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
+
+  <node pkg="robot_state_publisher" type="robot_state_publisher"  name="robot_state_publisher">
+    <param name="publish_frequency" type="double" value="30.0" />
+  </node>
+
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" 
+        args="-urdf -model fanuc -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos) -param robot_description" 
+				output="screen" />
+
+	<rosparam command="load" file="$(arg config_state)"/>
+  <rosparam command="load" file="$(arg config_control)"/>
+ 
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" />
+
+  <node name="controller_spawner" pkg="controller_manager" type="spawner"
+     args="joint_state_controller
+					joint_traj_controller"/>
+
+</launch>

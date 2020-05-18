@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro">
+
+  <xacro:macro name="fanuc_gazebo" params="prefix robot_parameter_name">
+
+    <gazebo reference="${prefix}base_link">
+      <selfCollide>true</selfCollide>
+			<material>Gazebo/Black</material>
+		  <turnGravityOff>true</turnGravityOff>
+    </gazebo>
+    <gazebo reference="${prefix}link_1">
+      <selfCollide>true</selfCollide>
+			<material>Gazebo/Yellow</material>
+		  <turnGravityOff>true</turnGravityOff>
+    </gazebo>
+    <gazebo reference="${prefix}link_2">
+      <selfCollide>true</selfCollide>
+			<material>Gazebo/Orange</material>
+		  <turnGravityOff>true</turnGravityOff>
+    </gazebo>
+    <gazebo reference="${prefix}link_3">
+      <selfCollide>true</selfCollide>
+			<material>Gazebo/Orange</material>
+		  <turnGravityOff>true</turnGravityOff>
+    </gazebo>
+    <gazebo reference="${prefix}link_4">
+      <selfCollide>true</selfCollide>
+			<material>Gazebo/Orange</material>
+		  <turnGravityOff>true</turnGravityOff>
+    </gazebo>
+    <gazebo reference="${prefix}link_5">
+      <selfCollide>true</selfCollide>
+			<material>Gazebo/Orange</material>
+		  <turnGravityOff>true</turnGravityOff>
+    </gazebo>
+		<gazebo reference="${prefix}link_6">
+      <selfCollide>true</selfCollide>
+			<material>Gazebo/Orange</material>
+		  <turnGravityOff>true</turnGravityOff>
+    </gazebo>
+
+		<gazebo>
+		  <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+				<robotParam>${robot_parameter_name}</robotParam>
+		  </plugin>
+		</gazebo>
+
+  </xacro:macro>
+
+</robot>

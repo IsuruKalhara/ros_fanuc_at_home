@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<robot name="fanuc" xmlns:xacro="http://wiki.ros.org/xacro">
+	<xacro:arg name="robot_param" default="robot_description"/>
+  <xacro:arg name="robot_prefix" default=""/>
+
+  <xacro:include filename="$(find fanuc_at_home)/urdf/robot/lrmate200ic_macro.xacro"/>
+	<xacro:include filename="$(find fanuc_at_home)/gazebo/fanuc.gazebo" />
+  <xacro:fanuc_lrmate200ic prefix="$(arg robot_prefix)"/>
+  <xacro:fanuc_gazebo prefix="$(arg robot_prefix)" robot_parameter_name="$(arg robot_param)"/>
+</robot>
