@@ -1,0 +1,12 @@
+<launch>
+
+		<arg name="x_pos" default="-2.1"/>
+  	<arg name="y_pos" default="2.25"/>
+  	<arg name="z_pos" default="1.02"/>
+
+    <param name="box_description" command="$(find xacro)/xacro --inorder $(find fanuc_at_home)/urdf/box/box.xacro"/>
+    <node name="box_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" args="robot_description:=box_description" />
+    <node name="spawn_object" pkg="gazebo_ros" type="spawn_model" 
+					args="-urdf -model simple_box -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos) -param box_description" output="screen" />
+
+</launch>
