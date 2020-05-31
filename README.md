@@ -35,10 +35,18 @@ You can use the fanuc_and_base.launch file to get a good idea about that.
 How to run pick drop sequence,
 
  1. Clone and build dependencies
- 2. '''roslaunch fanuc_at_home fanuc_on_table.launch'''
- 3. '''roslaunch fanuc_moveit move_group.launch'''
- 4. '''rosrun fanuc_at_home fanuc_pick_drop.py'''
+ 2. ```roslaunch fanuc_at_home fanuc_on_table.launch```
+ 3. ```roslaunch fanuc_moveit move_group.launch```
+ 4. ```rosrun fanuc_at_home fanuc_pick_drop.py```
 
 ```libgazebo_ros_vacuum_gripper``` plugin is used for the gripper. See the code to learn how the friction plate is used to keep the box when vacuum gripper works.
+
+### Pick and Drop 
+
+<img src="images/start.png" width="500"/>
+<img src="images/grab.png" width="500"/>
+<img src="images/carry.png" width="500"/>
+<img src="images/dropp.png" width="500"/>
+
 
 
