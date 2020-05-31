@@ -37,4 +37,6 @@
      args="joint_state_controller
 					joint_traj_controller"/>
 
+	<include file="$(find fanuc_at_home)/launch/box.launch" />
+
 </launch>

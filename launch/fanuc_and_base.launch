@@ -27,6 +27,7 @@
     <arg name="debug" value="false"/>
   </include>
 
+
 	<group ns="/arm">
 		<param name="tf_prefix" value="arm"/>
 		<param name="/arm/robot_description" command="$(find xacro)/xacro '$(arg arm_model)' robot_param:=/arm/robot_description" />
@@ -74,7 +75,6 @@
 		   		args="--namespace=/base
 							 joint_state_controller
 							 diff_drive_controller"/>
-
 	</group>
 
 </launch>
